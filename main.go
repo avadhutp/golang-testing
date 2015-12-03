@@ -10,4 +10,8 @@ func main() {
 	// jsondecode
 	raw := "{\"param\":\"value\"}"
 	fmt.Println(decodeJSON(raw))
+
+	// imdb
+	title := getTitle("tt0119116")
+	fmt.Println(title)
 }
