@@ -10,7 +10,8 @@ import (
 	"testing"
 )
 
-func TestEx1GetData(t *testing.T) {
+// TestHttpGetData Sets up a fake http server so that all calls can be intercepted
+func TestHttpGetData(t *testing.T) {
 	expected := "{\"param\":\"value\"}"
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
@@ -24,7 +25,8 @@ func TestEx1GetData(t *testing.T) {
 	assert.Equal(t, expected, actual)
 }
 
-func TestEx1GetDataHandleError(t *testing.T) {
+// TestHttpGetDataHandleError makes sure that a call to http.client.Get will produce an error
+func TestHttpGetDataHandleError(t *testing.T) {
 	sut := NewGetter()
 	actual := sut.getData(httptest.DefaultRemoteAddr)
 
