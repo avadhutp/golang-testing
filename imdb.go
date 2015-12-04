@@ -1,6 +1,10 @@
 package main
 
-import "github.com/eefret/gomdb"
+import (
+	"fmt"
+
+	"github.com/eefret/gomdb"
+)
 
 var (
 	getMovie = gomdb.MovieByImdbID
@@ -12,4 +16,9 @@ func getTitle(id string) string {
 	}
 
 	return ""
+}
+
+func main() {
+	fmt.Println("Input: tt0119116")
+	fmt.Println("Output: " + getTitle("tt0119116"))
 }

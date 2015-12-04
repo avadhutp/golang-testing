@@ -1,0 +1,123 @@
+Testing in Go
+Yelp London ELG 4-Dec-2015
+
+Avadhut Phatarpekar
+Yelp UK
+
+avadhutp@yelp.com
+
+* Fundamentals
+* 
+- All you need is within Go
+- A more complete toolchain
+- Eschews external mocking/testing frameworks
+
+* Convention over configuration
+* 
+- Directory structure
+	├── collector
+	│   ├── collector.go
+	│   ├── collector_test.go
+	│   ├── diamond.go
+	│   ├── diamond_test.go
+	├── config
+	│   ├── config.go
+	│   └── config_test.go
+	├── handler
+	│   ├── datadog.go
+	│   ├── datadog_test.go
+- And to run...
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go test
+	PASS
+	ok      github.com/avadhutp/golang-testing      0.010s
+
+* Coverage
+* 
+- Create coverage profile
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go test -coverprofile=cover.out
+	PASS
+	coverage: 62.1% of statements
+	ok      github.com/avadhutp/golang-testing      0.010s
+- View details
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go tool cover -func=cover.out 
+	github.com/avadhutp/golang-testing/concurrency.go:13:   sendMetric      100.0%
+	github.com/avadhutp/golang-testing/concurrency.go:19:   process         0.0%
+	github.com/avadhutp/golang-testing/fakecache.go:13:     Get             100.0%
+	github.com/avadhutp/golang-testing/jsondecode.go:7:     decodeJSON      100.0%
+	github.com/avadhutp/golang-testing/main.go:5:           main            0.0%
+	total:                                                  (statements)    60.0%
+* 
+- Coverage as HTML report
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go tool cover -html=cover.out
+.image images/html-coverage.png 400 550
+
+* Testing package
+* 
+.code testingpkg_test.go
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go test -v -run TestMe*
+	=== RUN   TestMe
+	--- FAIL: TestMe (0.00s)
+	        raw_test.go:8: Confused Yoda is
+	FAIL
+	exit status 1
+	FAIL    github.com/avadhutp/golang-testing      0.009s
+
+* Introducing package assert
+* 
+.code assertpkg_test.go /^import/,/^}/
+	avadhutp@YELP-AVADHUTP golang-testing (master) $ go test -v -run TestAssert*
+	=== RUN   TestAssertPkg
+	--- FAIL: TestAssertPkg (0.00s)
+	        Error Trace:    raw_test.go:20
+	        Error:          Not equal: true (expected)
+	                                != false (actual)
+	        Messages:       This is very bad news!
+
+	FAIL
+	exit status 1
+	FAIL    github.com/avadhutp/golang-testing      0.011s
+
+* Parametrized (table-driven) tests
+* 
+- Code:
+.play jsondecode.go /^func decodeJSON/,/^}/
+* 
+- Test:
+.code -edit jsondecode_test.go /^func TestJsonDecode/,/^}/
+
+* External lib (dependecy injection)
+* 
+- Code:
+.play imdb.go /^import/,/^}/
+* 
+- Test:
+.code imdb_test.go /^func TestImdbGetMovie/,/^}/
+
+* Verify if a method is called
+* 
+- Code:
+.code fakecache.go
+* 
+.code fakecache_test.go /START PART 1/,/END PART 1/
+.caption Cont...
+* 
+.code fakecache_test.go /START PART 2/,/END PART 2/
+
+* Testing HTTP calls
+* 
+.play httpget.go /type Getter/,/return ""\n}/
+* 
+- Test normal use case
+.code httpget_test.go /^func TestHttpGetData/,/^}/
+* 
+- Test error handling
+.code httpget_test.go /^func TestHttpGetDataHandleError/,/^}/
+- References:
+.link https://golang.org/pkg/net/http/httptest/
+
+
+* Testing concurrency
+* 
+.code concurrency.go
+* 
+.code concurrency_test.go /^func TestConcurrencySendMetric/,/^}/

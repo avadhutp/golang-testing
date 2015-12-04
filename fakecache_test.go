@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// START PART 1 OMIT
 func TestFakeCacheGet(t *testing.T) {
 	oldDetermineValue := determineValue
 	defer func() { determineValue = oldDetermineValue }()
@@ -26,6 +27,8 @@ func TestFakeCacheGet(t *testing.T) {
 			determineValueCalled = true
 			f.value = test.expected
 		}
+		// END PART 1 OMIT
+		// START PART 2 OMIT
 
 		sut := new(FakeCache)
 		sut.value = test.initialValue
@@ -36,3 +39,5 @@ func TestFakeCacheGet(t *testing.T) {
 		assert.Equal(t, test.expected, actual)
 	}
 }
+
+//END PART 2 OMIT

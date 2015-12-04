@@ -1,0 +1,21 @@
+mode: set
+github.com/avadhutp/golang-testing/fakecache.go:13.34,14.19 1 1
+github.com/avadhutp/golang-testing/fakecache.go:18.2,18.16 1 1
+github.com/avadhutp/golang-testing/fakecache.go:14.19,16.3 1 1
+github.com/avadhutp/golang-testing/fakecache.go:21.38,24.2 1 0
+github.com/avadhutp/golang-testing/httpget.go:19.26,24.2 3 1
+github.com/avadhutp/golang-testing/httpget.go:26.45,29.16 2 1
+github.com/avadhutp/golang-testing/httpget.go:33.2,35.52 2 1
+github.com/avadhutp/golang-testing/httpget.go:39.2,39.11 1 0
+github.com/avadhutp/golang-testing/httpget.go:29.16,31.3 1 1
+github.com/avadhutp/golang-testing/httpget.go:35.52,37.3 1 1
+github.com/avadhutp/golang-testing/imdb.go:9.33,10.40 1 0
+github.com/avadhutp/golang-testing/imdb.go:14.2,14.11 1 0
+github.com/avadhutp/golang-testing/imdb.go:10.40,12.3 1 0
+github.com/avadhutp/golang-testing/jsondecode.go:7.53,10.16 2 1
+github.com/avadhutp/golang-testing/jsondecode.go:14.2,14.8 1 1
+github.com/avadhutp/golang-testing/jsondecode.go:10.16,12.3 1 1
+github.com/avadhutp/golang-testing/main.go:5.13,17.2 6 0
+github.com/avadhutp/golang-testing/concurrency.go:13.45,14.18 1 1
+github.com/avadhutp/golang-testing/concurrency.go:14.18,16.3 1 1
+github.com/avadhutp/golang-testing/concurrency.go:19.42,21.2 0 0

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -10,16 +11,13 @@ const (
 	apiURL = "http://jsonplaceholder.typicode.com/posts/1"
 )
 
-// Getter Test struct for url content retreival
 type Getter struct {
 	client http.Client
 }
 
-// NewGetter OOP constructor for testin
 func NewGetter() *Getter {
 	g := new(Getter)
 	g.client = http.Client{Timeout: 10 * time.Second}
-
 	return g
 }
 
@@ -37,4 +35,10 @@ func (g *Getter) getData(url string) string {
 	}
 
 	return ""
+}
+
+func main() {
+	fmt.Println("Input is: " + apiURL)
+	g := NewGetter()
+	fmt.Println("Output is: " + g.getData(apiURL))
 }

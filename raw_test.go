@@ -1,12 +1,21 @@
 package main
 
-import "testing"
+import (
+	"testing"
 
-func TestRaw(t *testing.T) {
-	x := 1
-	y := 2
+	"github.com/stretchr/testify/assert"
+)
 
-	if x != y {
-		t.Errorf("Expected %d; got %d", x, y)
+func TestMe(t *testing.T) {
+	True := false
+	if true != True {
+		t.Error("Confused Yoda is")
 	}
+}
+
+func TestAssertPkg(t *testing.T) {
+	expected := true
+	actual := false
+
+	assert.Equal(t, expected, actual, "This is very bad news!")
 }
