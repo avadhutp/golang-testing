@@ -3,7 +3,7 @@
 My talk from Yelp (London) Engineering Learning Group. This repository serves to demonstrate how one can go about writing unit tests for their Go code.
 
 ### To run locally
-```go
+```bash
 go github.com/eefret/gomdb
 go install golang.org/x/tools/cmd/present
 go get github.com/avadhutp/golang-testing
