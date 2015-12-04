@@ -4,7 +4,7 @@ This repository serves to demonstrate how one can go about writing unit tests fo
 
 ### To run locally
 ```go
-github.com/eefret/gomdb
+go github.com/eefret/gomdb
 go install golang.org/x/tools/cmd/present
 go get github.com/avadhutp/golang-testing
 present
