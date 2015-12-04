@@ -121,3 +121,12 @@ avadhutp@yelp.com
 .code concurrency.go
 * 
 .code concurrency_test.go /^func TestConcurrencySendMetric/,/^}/
+
+* References
+* 
+- Andrew's talk on basic testing techniques in Go
+.link https://www.youtube.com/watch?v=ndmB0bj7eyw
+- 5 simple tips and tricks for writing unit tests in #golang
+.link https://medium.com/@matryer/5-simple-tips-and-tricks-for-writing-unit-tests-in-golang-619653f90742
+- Interfaces and Composition for Effective Unit Testing in Golang
+.link http://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/
