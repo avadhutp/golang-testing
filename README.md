@@ -1,4 +1,4 @@
-# Testing in Go
+# Testing in Go ![logo](images/gopher.ico)
 
 This repository serves to demonstrate how one can go about writing unit tests for their Go code.
 
